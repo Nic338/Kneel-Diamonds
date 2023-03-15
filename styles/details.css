@@ -1,5 +1,9 @@
 /* You need to create the rest of styles for the layout shown */
-
+.choices_jewelry {
+    flex-basis: 24%;
+    margin:  2rem;
+    padding: 1.5rem;
+}
 .options {
     flex-basis: 24%;
     margin: 0 2rem;

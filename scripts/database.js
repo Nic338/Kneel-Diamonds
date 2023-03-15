@@ -26,14 +26,14 @@ const database = {
         { id: 5, metal: "Palladium", price: 1241.0 }
     ],
     customOrders: [
-        {
-            id: 1,
-            metalId: 3,
-            sizeId: 2,
-            styleId: 3,
-            jewelryId: 1,
-            timestamp: 1614659931693
-        }
+        // {
+        //     id: 1,
+        //     metalId: 3,
+        //     sizeId: 2,
+        //     styleId: 3,
+        //     jewelryId: 1,
+        //     timestamp: 1614659931693
+        // }
     ],
     orderBuilder: {},
     jewelries: [
@@ -43,55 +43,64 @@ const database = {
 
     ]
 }
-
-
-export const getMetals = () => {
-    return database.metals.map(metal => ({...metal}))
-}
-export const getStyles = () => {
-    return database.styles.map(style => ({...style}))
-}
-export const getSizes = () => {
-    return database.sizes.map(size => ({...size}))
-}
-export const getOrders = () => {
-    return database.customOrders.map(order => ({...order}))
-}
-export const getJewelries = () => {
-    return database.jewelries.map(jewelry => ({...jewelry}))
+export const getDatabase = () => {
+    return {...database}
 }
 
-export const setMetal = (id) => {
-    database.orderBuilder.metalId = id
-}
+// export const getMetals = () => {
+//     return database.metals.map(metal => ({...metal}))
+// }
+// export const getStyles = () => {
+//     return database.styles.map(style => ({...style}))
+// }
+// export const getSizes = () => {
+//     return database.sizes.map(size => ({...size}))
+// }
+// export const getOrders = () => {
+//     return database.customOrders.map(order => ({...order}))
+// }
+// export const getJewelries = () => {
+//     return database.jewelries.map(jewelry => ({...jewelry}))
+// }
+// export const getOrderBuilder = () => {
+//     return {...database.orderBuilder}
+// }
 
-export const setSize = (id) => {
-    database.orderBuilder.sizeId = id
-}
+// export const setMetal = (id) => {
+//     database.orderBuilder.metalId = id
+//     document.dispatchEvent(new CustomEvent("stateChanged"))
+// }
 
-export const setStyle = (id) => {
-    database.orderBuilder.styleId = id
-}
-export const setJewelry = (id) => {
-    database.orderBuilder.jewelryId = id
-}
-export const addCustomOrder = () => {
-    // Copy the current state of user choices
-    const newOrder = {...database.orderBuilder}
+// export const setSize = (id) => {
+//     database.orderBuilder.sizeId = id
+//     document.dispatchEvent(new CustomEvent("stateChanged"))
+// }
 
-    // Add a new primary key to the object
-    const lastIndex = database.customOrders.length - 1
-    newOrder.id = database.customOrders[lastIndex].id + 1
+// export const setStyle = (id) => {
+//     database.orderBuilder.styleId = id
+//     document.dispatchEvent(new CustomEvent("stateChanged"))
+// }
+// export const setJewelry = (id) => {
+//     database.orderBuilder.jewelryId = id
+//     document.dispatchEvent(new CustomEvent("stateChanged"))
+// }
+// export const addCustomOrder = () => {
+//     // Copy the current state of user choices
+//     const newOrder = {...database.orderBuilder}
 
-    // Add a timestamp to the order
-    newOrder.timestamp = Date.now()
+//     // Add a new primary key to the object
+//     const lastIndex = database.customOrders.length - 1
+//     newOrder.id = database.customOrders.length === 0 ? 1 : database.customOrders[lastIndex].id + 1
 
-    // Add the new order object to custom orders state
-    database.customOrders.push(newOrder)
+//     // Add a timestamp to the order
+//     newOrder.timestamp = Date.now()
 
-    // Reset the temporary state for user choices
-    database.orderBuilder = {}
+//     // Add the new order object to custom orders state
+//     database.customOrders.push(newOrder)
 
-    // Broadcast a notification that permanent state has changed
-    document.dispatchEvent(new CustomEvent("stateChanged"))
-}
+//     // Reset the temporary state for user choices
+//     database.orderBuilder = {}
+
+//     // Broadcast a notification that permanent state has changed
+//     document.dispatchEvent(new CustomEvent("stateChanged"))
+// }
